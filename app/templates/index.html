@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    
+
+    <main>
+        <!-- slider area start -->
+        <section class="hero-slider">
+            <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
+                <!-- single slider item start -->
+                
+                {% for i in slid %}
+                    
+                <div class="hero-single-slide hero-overlay">
+                    <div class="hero-slider-item hero-1 bg-img" data-bg="{{i.bimg.url}}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="hero-slider-content slide-1">
+                                        <h1 class="slide-title">New</h1>
+                                        <h2 class="slide-subtitle">Running Sneakers <span>Men's like plex</span></h2>
+                                        <a href="#" class="btn btn-large btn-bg">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                    
+                <!-- single slider item start -->
+
+                
+            </div>
+        </section>
+        <!-- slider area end -->
+       
+        <!-- product gallery area start best seller -->
+        <section class="product-gallery section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title text-center">
+                            <h3 class="title">TRANDING BOOKS</h3>
+                            <h4 class="sub-title">Most read and tranding right now</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    
+                    
+                    <div class="col-12">
+                        
+                        <div class="product-carousel--4 slick-row-5 slick-arrow-style">
+                            <!-- product single item start -->
+                            {% for i in best %}
+                            
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <a href="{% url 'bookdetail' %}?cid={{i.id}}">
+                                        <img src="{{i.image.url}}" height="400px" alt="product thumb">
+                                    </a>
+                                   
+                                  
+                                   
+                                   <div class="button-group">
+                                    <a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                    
+                                    {% if request.session.user %}
+                                    
+                                   
+                                   {% for j in status %}
+                                       
+                                       {% if i.book_name == j.book2.book_name  %}
+                                       <a href="{{i.ebook.url}}" data-toggle="modal"><i class="fa fa-eye"></i></span></a>
+                                       {% endif %}
+                                           
+                                   {% endfor %}
+                                       
+                                        
+                                  
+                                    {% endif %}
+                                        
+                                    </div>
+                               
+                                       
+                                    <div class="product-label">
+                                        <span>new</span>
+                                    </div>
+
+                                    <!-- <div class="discount-label">
+                                        <span>-10% Off</span>
+                                    </div> -->
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-caption">
+                                        <h6 class="product-name">
+                                            <a href="{% url 'bookdetail' %}?cid={{i.id}}">{{i.book_name}}</a>
+                                        </h6>
+                                        <div class="price-box">
+                                            <span class="price-regular">${{i.price}}</span>
+                                        </div>
+                                        <a class="add-to-cart" href="{% url 'addtocart' i.id %}"><i class="fa fa-shopping-cart"></i></a>
+                                    </div>
+                                    <div class="ratings">
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- product single item end -->
+
+                        </div>
+                        
+                    </div>
+                        
+                    
+                        
+                </div>
+               
+            </div>
+        </section>
+        <!-- product gallery area end -->
+<br>
+<section class="product-gallery section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h3 class="title">Action and Adventure</h3>
+                    <h4 class="sub-title">Most read and tranding right now</h4>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            
+            <div class="col-12">
+                
+                <div class="product-carousel--4 slick-row-5 slick-arrow-style">
+                    <!-- product single item start -->
+                    {% for i in act %}
+                    <div class="product-item">
+                        <div class="product-thumb">
+                            <a href="product-details.html">
+                                <img src="{{i.image.url}}" height="400px" alt="product thumb">
+                            </a>
+                            <div class="button-group">
+                                <a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="{{i.ebook.url}}" data-toggle="modal" ><i class="fa fa-eye"></i></span></a>
+                            </div>
+                            <div class="product-label">
+                                <span>new</span>
+                            </div>
+
+                            <!-- <div class="discount-label">
+                                <span>-10% Off</span>
+                            </div> -->
+                        </div>
+                        <div class="product-content">
+                            <div class="product-caption">
+                                <h6 class="product-name">
+                                    <a href="product-details.html">{{i.book_name}}</a>
+                                </h6>
+                                <div class="price-box">
+                                    <span class="price-regular">${{i.price}}</span>
+                                </div>
+                                <a class="add-to-cart" href="{% url 'addtocart' i.id %}"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                            <div class="ratings">
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                                <span><i class="fa fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- product single item end -->
+
+                </div>
+                
+            </div>
+                
+            
+                
+        </div>
+       
+    </div>
+</section>
+<!-- product gallery area end -->
+
+       
+    </main>
+
+    <!-- Scroll to top start -->
+    <div class="scroll-top not-visible">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <!-- Scroll to Top End -->
+ <!-- Quick view modal start -->
+
+    
+
+{% endblock body %}
+    
